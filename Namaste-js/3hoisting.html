@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>asdhgasgf</h1>
+</body>
+<script>
+    
+    // Hoisting--->> It is process in Js whereby the interpretor appears to move the declarations of functions,
+    //                variables and classes to the top of scope before excuetion of code.
+
+
+
+    // functional scope and block scope
+	let a = 10;
+	function f() {
+		if (true) {
+			var a = 9
+            let b = 10
+            const c = 11
+
+			// It prints 9,10,11
+            console.log(a)
+			console.log(b);
+            console.log(c)
+		}
+        // var is functional scope -- to once you defined somewhere kahi bi pure function me access kr skete
+        // but let and const are block scoped so we cant acces it outside that curly braces abd will gives refernce error--->> b is not defined
+		// It gives error as it
+		// defined in if block
+		// console.log(a);
+		// console.log(b);
+		// console.log(c);
+	}
+	f()
+
+	// It prints 10
+	// console.log(a)
+// ----------------------------------------------------------------------------------------------------------------------
+
+    // this keyword is used to refer to owner object--if any otherwise refer to global object
+
+    // const person = {
+    //     name:"john",
+    //     myName: function(){
+    //          console.log(this.name)
+    //     }
+    // }
+
+    // person.myName()
+
+// ----------------------------------------------------------------------------------------------------------------------
+
+console.log(typeof null)       //-->Object
+console.log(typeof undefined)       //-->undefined
+
+
+let arr1 = [1,2,3]
+const arr2 = arr1
+arr2[0] = 9
+
+console.log(arr1,arr2)
+    
+    
+</script>
+</html>

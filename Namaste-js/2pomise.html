@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //  PROMISE-->> Promise is an object representing eventful completion or failure of an async operation
+
+// const githubapi = "https://api.github.com/users"
+
+// const user = fetch(githubapi)
+// console.log(user)
+
+// coonsumer
+
+ 
+   const cart = ["A","B","c"]
+  const promise = createOrder(cart)
+  console.log(promise)
+
+  promise.then(function(res){
+    console.log("res",res)
+  })
+
+
+
+// Producer
+
+function createOrder(cart) {
+     const pr = new Promise(function(resolve,reject){
+        if(!validateCart(cart)){
+            const err = new Error("cart is invalid")
+            reject(err)
+        }
+        const id=1234
+        if(id){
+            resolve(id)
+        }
+     })
+
+     return pr
+}
+
+function validateCart(cart){
+    return true
+}
+
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
