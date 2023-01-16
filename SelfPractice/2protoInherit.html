@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const arr = [1,2,3]
+    
+    console.log(arr)
+    // create an object that we can use as blurpint for other objects in same family
+
+    const cat  = {
+        legs:4,
+        fur:true,
+        tail:true,
+        claws:"sharp"
+    }
+
+    const lion = Object.create(cat)
+    console.log("lion",lion)
+
+    const liger = Object.create(lion)
+    console.log("liger",liger)
+
+    // we find cat in prototype of lion and in proto of liger we find lion and in lion we found cat like chaining
+    // [[prototype]]-->> defined inside this are internal and not accessable to everyone
+
+// Q:create a constructor function student and add method using prototype
+
+function Student(n,u){
+this.name = n,
+this.unit = u
+}
+
+const s1 = new Student("Ram",3)
+
+
+Student.prototype.course = "fswd"
+
+Student.prototype.bio = function (){
+    return (`hello from ${this.name} studing in ${this.unit}`)
+}
+console.log(s1.bio())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
