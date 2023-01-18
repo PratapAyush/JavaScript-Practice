@@ -21,11 +21,32 @@
 
  
    const cart = ["A","B","c"]
+
+   // consumer of promise
   const promise = createOrder(cart)
   console.log(promise)
 
   promise.then(function(res){
+    // when promise is successful,
     console.log("res",res)
+    // return statement should also be there in after chain, it will give good manner of writing code
+    // Also it will return that particular thing to the next chain that we have 
+    return res
+  })
+  .then(function(orderId){
+   // console.log("order",orderId)
+   return procedToPayment(orderId)
+  })
+  // chaining to catch resolve and reject for procedToPayment function
+  .then(function(paymentInfo){
+    console.log(paymentInfo)
+  })
+  
+
+
+  // always write what happens when promise will be rejected as it is more graceful way of handling error
+  .catch(function (err){
+    console.log(err.message)
   })
 
 
@@ -40,7 +61,10 @@ function createOrder(cart) {
         }
         const id=1234
         if(id){
-            resolve(id)
+            setTimeout(function(){
+                resolve(id)
+
+            },5000)
         }
      })
 
@@ -51,9 +75,14 @@ function validateCart(cart){
     return true
 }
 
+function procedToPayment(orderId){
+  return new Promise(function (resolve,reject){
+    resolve("proceedToPaymentDone")
+  })
+}
+
 
 //
-
 
 
 
