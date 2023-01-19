@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onkeyup="betterFunction()">
+    <hr/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <label for="myInput">Type something in!</label>
+    <input id="myInput" type="text">
+</body>
+<script>
+    var getData = ()=>{
+        console.log("fetching data...")
+    } 
+ 
+    let debounce=function(fn,d){
+        let timer
+        console.log(1)
+        return function(){
+            console.log(2)
+            let context = this;
+            args = arguments;
+            clearTimeout(timer)
+            console.log(3)
+            timer = setTimeout(()=>{
+                fn.apply(context,arguments)
+            },d)
+        }
+    }
+
+    let betterFunction = debounce(getData,3000)
+
+
+    //-------------------------------------------------------->>>>>>>.
+    let myinput = document.getElementById("myInput")
+
+    function helloworld(){
+        console.log("hello world")
+    }
+    myinput.addEventListener("keyup",debounce(helloworld,2000))
+       
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let person = {
+        fname:"Aka",
+        lname:"kk",
+      
+    }
+
+    let printname = function(home){
+            console.log(this.fname+" "+this.lname + home)
+        }
+    // method you call to print function but through call you can borrow function to have same functionality
+    printname.call(person,"dfgfg")
+
+    let person2 = {
+        fname:"bb",
+        lname:"kk",
+    }
+
+    // function borrowing
+    printname.call(person2,"fdgfgfg")
+    printname.apply(person2,["dfdfd"])
+
+    // bind
+    // bind method will create copy of this method and return  a function 
+    // which can be invoked later
+
+    let printMyName = printname.bind(person,"agra")
+
+    printMyName()
+
+
+   // Q: make a function that behaves exactly like Bind
+     
+   Function.prototype.myBind=function(){
+    return function(){
+
+    }
+   }
+
+
+
+
+
+
+
+</script>
+</html>
