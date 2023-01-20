@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT BUBBLING</title>
+    <style>
+        div{
+            min-width: 100px;
+            min-height: 100px;
+            border: 1px solid black;
+            padding: 30px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="grandparent">
+        <div id="parent">
+            <div id="child">
+
+            </div>
+        </div>
+    </div>
+
+</hr>
+</hr>
+</hr>
+<div>
+    <ul id="category">
+        <li id="laptops">laptops</li>
+        <li id="cameras">camera</li>
+        <li id="shoes">Shoes</li>
+    </ul>
+</div>
+
+<br/>
+<br/>
+<br/>
+<input type="text" id="name" data-uppercase/>
+</body>
+<script>
+    document.getElementById("grandparent")
+    .addEventListener("click",()=>{
+        console.log("grandPARENTclicked")
+    },true)  // capturing
+    // useCapture value will be defined here if true then --->>> capturing will be triggered
+    document.getElementById("parent")
+    .addEventListener("click",()=>{
+        console.log("parent clicked")
+    },false) // bubbling
+
+    document.getElementById("child")
+    .addEventListener("click",(e)=>{
+        console.log("child clicked")
+        e.stopPropagation()
+    },true) // bubbling
+
+//------------------------------------------------------------------------------------------------------------
+// EVENT DELEGATION--->>>
+// Its a concept of attaching event listener to parent rather than each child ,so when we click on any of child then eventually event will
+// bubble out to trigger the event for each category  just the way events triggers in bubbling
+
+document.getElementById("category").addEventListener("click",(e)=>{
+    console.log(e.target.id)
+
+    if(e.target.tagname == "LI") {
+    return    window.location.href = "/" + e.target.id
+
+    }
+})
+
+
+// this can also be done through evenet bubbling
+document.getElementById("name").addEventListener("keyup",(e)=>{
+    console.log(e.target)
+    if(e.target.dataset.uppercase !=undefined){
+        e.target.value = e.target.value.toUpperCase()
+    }
+})
+
+ 
+</script>
+</html>
